@@ -1,6 +1,6 @@
 body {
     &[data-page="color"] {
-        .slider {
+        .main {
             transform: translateX(0);
             transition: $t-slider;
         }
@@ -13,7 +13,7 @@ body {
     }
     
     &[data-page="image"] {
-        .slider {
+        .main {
             transform: translateX(-100vw);
             transition: $t-slider;
         }

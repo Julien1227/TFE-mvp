@@ -23,6 +23,13 @@ h2 {
   display: none;
 }
 
+body {
+  position: fixed;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
 .btn {
   background-color: #ffffff88;
   padding: 1rem;
@@ -35,9 +42,7 @@ h2 {
 }
 
 .main {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  display: flex;
 }
 
 .menu {
@@ -60,16 +65,12 @@ h2 {
   height: 2rem;
 }
 
-.slider {
-  display: flex;
-}
-
 .section {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-width: 100%;
-  height: 100vh;
+  height: calc(100vh - 4rem);
 }
 .section-intro {
   position: absolute;
@@ -93,58 +94,19 @@ h2 {
   position: absolute;
 }
 .section .container-tolisten {
-  height: 100%;
-}
-.section .container-tolisten-color {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-}
-.section .container-tolisten-color .frequency {
-  position: relative;
-  z-index: 100;
-  margin-bottom: -10.5vw;
-  font-size: 25vw;
-  font-weight: 800;
-  letter-spacing: -0.3rem;
-  color: #fff;
-}
-.section .container-tolisten-color-shadow {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to top, #00000033, #00000000);
-}
-.section .container-tolisten-image {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-  background-size: cover;
-  background-position: center;
-}
-.section .container-tolisten-image .image {
-  display: none;
-}
-.section .container-tolisten-image .color-list {
-  display: flex;
-  background-color: #fff;
-  border-radius: 1000px;
-}
-.section .container-tolisten-image .color-list-el {
-  width: 20rem;
-  height: 20rem;
-  border-radius: 1000px;
+  align-items: flex-end;
+  height: 600px;
 }
 .section .form {
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-self: flex-end;
-  margin-bottom: 4rem;
+  height: 400px;
   padding: 2rem;
 }
 .section .form-el {
@@ -158,6 +120,54 @@ h2 {
 }
 .section .form .btn {
   margin-top: 1rem;
+}
+.section-color .container-tolisten-frequency {
+  position: relative;
+  z-index: 100;
+  margin-bottom: -10.5vw;
+  font-size: 25vw;
+  font-weight: 800;
+  letter-spacing: -0.3rem;
+  color: #fff;
+}
+.section-color .container-tolisten-shadow {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top, #00000033, #00000000);
+}
+.section-image .container-tolisten {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+}
+.section-image .container-tolisten .color-list {
+  display: flex;
+  justify-self: flex-end;
+  padding: 0.5rem;
+  margin: 0;
+  margin-bottom: -5rem;
+  box-shadow: 0px 0px 25px -10px #00000038;
+  background-color: #fff;
+  border-radius: 1000px;
+}
+.section-image .container-tolisten .color-list-el {
+  width: 15vw;
+  height: 15vw;
+  margin: 0.3rem;
+  border-radius: 1000px;
+}
+.section-image .container-tolisten .img {
+  display: none;
+}
+.section-image .container-tolisten .btn {
+  z-index: 20;
 }
 
 /* Css 100% responsiv des input range */
@@ -223,6 +233,10 @@ body {
   margin: 0;
 }
 
+img {
+  display: block;
+}
+
 svg {
   height: inherit;
 }
@@ -267,7 +281,7 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 
-body[data-page=color] .slider {
+body[data-page=color] .main {
   transform: translateX(0);
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -276,7 +290,7 @@ body[data-page=color] .menu-btn[id=image] {
   transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
   cursor: pointer;
 }
-body[data-page=image] .slider {
+body[data-page=image] .main {
   transform: translateX(-100vw);
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }

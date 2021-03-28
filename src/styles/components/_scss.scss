@@ -1,5 +1,12 @@
 .use-svg, #uploadInput {display: none;}
 
+body {
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
 .btn {
     background-color: $lightBtn;
     padding: 1rem;
@@ -12,9 +19,7 @@
 }
 
 .main {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    display: flex;
 }
 
 .menu {
@@ -39,17 +44,13 @@
     }
 }
 
-.slider {
-    display: flex;
-}
-
 .section {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
     min-width: 100%;
-    height: 100vh;
+    height: calc(100vh - 4rem);
     
     &-intro {
         position: absolute;
@@ -75,69 +76,28 @@
             position: absolute;
         }
     }
-
+    
+    
     .container-tolisten {
-        height: 100%;
-        &-color {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-
-            .frequency {
-                position: relative;
-                z-index: 100;
-                margin-bottom: -10.5vw;
-                font-size: 25vw;
-                font-weight: 800;
-                letter-spacing: -0.3rem;
-                color: $white;
-                
-            }
-            &-shadow {
-                position: absolute;
-                display: block;
-                width: 100%;
-                height: 20%;
-
-                background: linear-gradient(to top, #00000033, #00000000);
-            }
-        }
-
-        &-image {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 2rem;
-
-            background-size: cover;
-            background-position: center;
-            .image {
-                display: none;
-            }
-
-            .color-list {
-                display: flex;
-                background-color: $white;
-                border-radius: $round;
-                &-el {
-                    width: 20rem;
-                    height: 20rem;
-                    border-radius: $round;
-                }
-            }
-        }
-
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        align-items: flex-end;
+        
+        height: 600px;
     }
+
     .form {
-        box-sizing: border-box;
+        box-sizing: content-box;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        justify-self: flex-end;
-        margin-bottom: 4rem;
 
+        height: 400px;
         padding: 2rem;
+
         &-el {
             margin: 0.5rem 0;
             width: 100%;
@@ -152,6 +112,72 @@
 
         .btn {
             margin-top: 1rem;
+        }
+    }
+
+
+    &-color {
+        .container-tolisten {    
+            &-frequency {
+                position: relative;
+                z-index: 100;
+                margin-bottom: -10.5vw;
+                font-size: 25vw;
+                font-weight: 800;
+                letter-spacing: -0.3rem;
+                color: $white;
+            }
+
+            &-shadow {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 20%;
+    
+                background: linear-gradient(to top, #00000033, #00000000);
+            }
+        }
+    }
+
+    &-image {
+        .container-tolisten {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+    
+            box-sizing: border-box;
+            padding: 2rem;
+    
+            background-size: cover;
+            background-position: center;
+            .color-list {
+                display: flex;
+                justify-self: flex-end;
+    
+                padding: 0.5rem;
+                margin: 0;
+                margin-bottom: -5rem;
+                box-shadow: $shadow;
+    
+                background-color: $white;
+                border-radius: $round;
+                &-el {
+                    width: 15vw;
+                    height: 15vw;
+                    margin: 0.3rem;
+    
+                    border-radius: $round;
+                }
+            }
+    
+            .img {
+                display: none;
+            }
+    
+            .btn {
+                z-index: 20;
+            }
         }
     }
 }

@@ -9201,26 +9201,24 @@ sliderBtn = document.querySelectorAll('.menu-btn'); // écoute d'une couleur
 
 var colorInput = document.querySelectorAll('#colorInput'),
     colorSpan = document.querySelectorAll('#colorSpan'),
-    actualColor = document.getElementById('container-tolisten-color'),
+    actualColor = document.getElementById('toListenColor'),
     actualNote = document.getElementById('playedColor'),
     input = document.querySelectorAll('.colorIpnut');
-var color = document.querySelector('.container-tolisten-color');
+var color = document.querySelector('.container-tolisten');
 var colorInputs = [],
-    colorSpans = []; // écoute d'une image
+    colorSpans = []; //Démarre l'API - là interviendra l'animation d'introduction
 
-var speed = 150;
-var playRate = document.getElementById('playRate');
-var playRateSpan = document.getElementById('playRateSpan');
-var imageBtn = document.getElementById('goBtn'),
-    imgToListen = document.getElementById('image'),
-    btnUpload = document.getElementById('uploadBtn'),
-    inputUpload = document.getElementById('uploadInput'),
-    backgroundImg = document.querySelector('.container-tolisten-image');
-var startBtn = document.querySelector('.section-intro-btn'),
-    sectionIntro = document.querySelector('.section-intro');
-startBtn.addEventListener('click', function (e) {
-  o.start(0);
-  sectionIntro.remove();
+var sectionIntro = document.querySelector('.section-intro');
+sectionIntro.addEventListener('click', function (e) {
+  o.start(0); // ANIMATION GSAP
+
+  gsap.to(sectionIntro, {
+    duration: 0.6,
+    scale: 2,
+    opacity: 0,
+    onComplete: deleteElement,
+    onCompleteParams: [sectionIntro]
+  });
 }); // SLIDER
 
 sliderBtn.forEach(function (element) {
@@ -9240,19 +9238,31 @@ colorSpan.forEach(function (colorSpan) {
 
 var _loop = function _loop(i) {
   colorInputs[i].addEventListener('input', function (e) {
-    // Défini la fréquence
-    o.frequency.value = setFrequency(colorInputs[0].value, colorInputs[1].value, colorInputs[2].value); // Défini l'intensité
+    var frq = setFrequency(colorInputs[0].value, colorInputs[1].value, colorInputs[2].value);
+    var gain = setGain(colorInputs[2].value, colorInputs[1].value); // Défini la fréquence
 
-    g.gain.setValueAtTime(setGain(colorInputs[2].value, colorInputs[1].value), context.currentTime); // Affiche la fréquence jouée
+    o.frequency.setValueAtTime(frq, context.currentTime); // Défini l'intensité
+
+    g.gain.setValueAtTime(gain, context.currentTime); // Affiche la fréquence jouée
 
     actualNote.innerHTML = o.frequency.value + " Hz"; // Affiche la valeur du slider 
 
     colorSpans[i].innerHTML = colorInputs[i].value; // Affiche la couleur jouée
 
-    setColors(colorInputs[0].value, colorInputs[1].value, colorInputs[2].value);
-    colorInputs[i].addEventListener('mouseup', function (e) {
-      fadeGain();
-    });
+    setColors(colorInputs[0].value, colorInputs[1].value, colorInputs[2].value); //Applique le bon event listenner (mouse ou touch)
+
+    if (window.matchMedia("(min-width: 900px)").matches) {
+      // Desktop
+      colorInputs[i].addEventListener('mouseup', function (e) {
+        g.gain.setTargetAtTime(0, context.currentTime, 0.3);
+      });
+    } else {
+      // Tablet - mobile
+      colorInputs[i].addEventListener('touchend', function (e) {
+        g.gain.setTargetAtTime(0, context.currentTime, 0.3);
+      });
+    } // Fait un fondu du son lorsqu'on lâche le slider
+
   });
 };
 
@@ -9260,7 +9270,17 @@ for (var i = 0; i < colorInputs.length; i++) {
   _loop(i);
 }
 
-; //ECOUTE D'UNE IMAGE
+; // écoute d'une image
+
+var speed = 150;
+var playRate = document.getElementById('playRate'),
+    playRateSpan = document.getElementById('playRateSpan');
+var playImageBtn = document.getElementById('getColors'),
+    imgToListen = document.getElementById('image'),
+    btnUpload = document.getElementById('uploadBtn'),
+    inputUpload = document.getElementById('uploadInput'),
+    colorList = document.querySelector('.color-list'),
+    backgroundImg = document.querySelector('.container-tolisten-image'); //ECOUTE D'UNE IMAGE
 // Réglage de la vitesse de lecture
 
 playRate.addEventListener('input', function (e) {
@@ -9278,14 +9298,13 @@ inputUpload.addEventListener('change', function (e) {
   imgToListen.src = imgLink;
 }); //Récupère les couleurs de l'image et les joue
 
-imageBtn.addEventListener('click', function () {
-  ul.innerHTML = "";
+playImageBtn.addEventListener('click', function (e) {
+  colorList.innerHTML = "";
   var vibrant = new Vibrant(imgToListen);
   var colors = vibrant.swatches();
   console.log(colors);
-  var gainValues = [],
-      frqs = [],
-      ul = document.querySelector('color-list');
+  var gains = [],
+      frqs = [];
 
   for (var color in colors) {
     if (colors.hasOwnProperty(color) && colors[color]) {
@@ -9293,60 +9312,58 @@ imageBtn.addEventListener('click', function () {
       var li = document.createElement('li');
       li.classList.add('color-list-el');
       li.style.backgroundColor = colors[color].getHex();
-      ul.appendChild(li); //Récupère les couleurs RGB (getHsl donne des valeurs inutilisable) - pour la fréquence
+      colorList.appendChild(li); //Récupère les couleurs RGB (getHsl donne des valeurs inutilisable) - pour la fréquence
 
       var rgbColor = colors[color].getRgb(); //Récupère les couleurs HSL - pour le gain
 
       var hslColor = RGBToHSL(rgbColor[0], rgbColor[1], rgbColor[2]); //Récupère une fréquence pour chaque couleurs
 
-      var _frq = Math.round((rgbColor[0] * 1 + rgbColor[1] * 1.7 + rgbColor[2] * 0.3) * 100) / 100;
+      var _frq = setFrequency(hslColor[0], hslColor[1], hslColor[2]);
 
-      frqs.push(_frq); //crée et récupère un gain
+      frqs.push(_frq);
+      console.log(hslColor[0]); //crée et récupère un gain
 
       var gain = setGain(hslColor[1], hslColor[2]);
-      gainValues.push(gain);
+      gains.push(gain);
     }
   } //Joue chaque paramètre les uns après les autres
 
 
   for (var i = 0; i < frqs.length; i++) {
     play(i);
-  }
-
-  function play(i) {
-    setTimeout(function () {
-      o.frequency.value = frqs[i];
-      g.gain.value = gainValues[i];
-    }, i * speed);
   } //Les rejoue à l'envers pour deux fois plus de plaisir  
 
 
   setTimeout(function () {
     frqs.reverse();
-    gainValues.reverse();
+    gains.reverse();
 
     for (var i = 1; i < frqs.length; i++) {
-      playReverse(i);
+      play(i);
     }
-  }, (frqs.length - 1) * speed);
-
-  function playReverse(i) {
-    setTimeout(function () {
-      o.frequency.value = frqs[i];
-      g.gain.value = gainValues[i];
-    }, i * speed);
-  } //Arrête le son après que les couleurs aient joué deux fois
-
+  }, (frqs.length - 1) * speed); //Arrête le son après que les couleurs aient joué deux fois
 
   setTimeout(function () {
     o.frequency.value = 0;
     g.gain.value = 0;
   }, (frqs.length * 2 - 1) * speed);
+
+  function play(i) {
+    setTimeout(function () {
+      o.frequency.value = frqs[i];
+      g.gain.value = gains[i];
+      g.gain.setTargetAtTime(0, context.currentTime, speed / 1550);
+    }, i * speed);
+  }
 }); // FUNCTIONS ______________________
 //source: https://gist.github.com/brunomonteiro3/27af6d18c2b0926cdd124220f83c474d
 
 function randomMinMax(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function deleteElement(element) {
+  element.remove();
 }
 
 function setColors(h, s, l) {
@@ -9363,8 +9380,7 @@ function setColors(h, s, l) {
 }
 
 function setGain(lum, sat) {
-  g.gain.value = gainValue; //Si la couleur est lumineuse, alors le son s'estompe également
-
+  //Si la couleur est lumineuse, alors le son s'estompe également
   if (lum >= 50) {
     lum = 100 - lum;
   }
@@ -9377,10 +9393,6 @@ function setGain(lum, sat) {
   }
 
   return gainValue;
-}
-
-function fadeGain() {
-  g.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 3);
 }
 
 function setFrequency(h, s, l) {
@@ -9476,6 +9488,37 @@ function HSLToHex(h, s, l) {
   if (g.length == 1) g = "0" + g;
   if (b.length == 1) b = "0" + b;
   return "#" + r + g + b;
+}
+
+function RGBToHSL(r, g, b) {
+  // Make r, g, and b fractions of 1
+  r /= 255;
+  g /= 255;
+  b /= 255; // Find greatest and smallest channel values
+
+  var cmin = Math.min(r, g, b),
+      cmax = Math.max(r, g, b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0; // Calculate hue
+  // No difference
+
+  if (delta == 0) h = 0; // Red is max
+  else if (cmax == r) h = (g - b) / delta % 6; // Green is max
+    else if (cmax == g) h = (b - r) / delta + 2; // Blue is max
+      else h = (r - g) / delta + 4;
+  h = Math.round(h * 60); // Make negative hues positive behind 360°
+
+  if (h < 0) h += 360; // Calculate lightness
+
+  l = (cmax + cmin) / 2; // Calculate saturation
+
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1)); // Multiply l and s by 100
+
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+  return [h, s, l];
 }
 
 /***/ }),

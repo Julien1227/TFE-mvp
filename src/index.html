@@ -19,12 +19,11 @@
   </section>
 
   <main class="main">
-    <div class="slider">
 
-      <section class="section">
+      <section class="section section-color">
 
-        <div style="background: linear-gradient(to top, #265973, #40bfbf);" class="container-tolisten container-tolisten-color">
-          <span class="frequency" id="playedColor">446 Hz</span>
+        <div id="toListenColor" style="background: linear-gradient(to top, #265973, #40bfbf);" class="container-tolisten">
+          <span class="container-tolisten-frequency" id="playedColor">446 Hz</span>
           <div class="container-tolisten-shadow"></div>
         </div>
 
@@ -47,35 +46,38 @@
       
       
       
-      <section class="section">
+      <section class="section section-image">
 
-        <div class="container-tolisten container-tolisten-image" style="background-image: url(/assets/images/img.jpg)">
+        <div style="background-image: url('assets/images/noPicture.jpg');" class="container-tolisten container-tolisten-image">
+
           <button id="uploadBtn" class="btn">Choisir une autre image</button>
-          <img id="image" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+
+          <img id="image" class="img" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+
           <input id="uploadInput" type="file" accept=".jpeg, .jpg, .png">
+
           <div class="container-tolisten-shadow"></div>
+
+          <ul class="color-list"></ul>
         </div>
-        <ul class="color-list"></ul>
 
         <div class="form">
           <div class="form-el">
             <label>Vitesse de lecture: <span id="playRateSpan">150</span>ms</label>
-            <input id="playRate" type="range" min="-500" max="-50">
+            <input id="playRate" type="range" value="150" min="-500" max="-50">
           </div>
 
-          <button class="btn btn-dark">Jouer la mélodie</button>
+          <button id="getColors" class="btn btn-dark">Jouer la mélodie</button>
         </div>
-    
-        <button id="goBtn" class="btn">Générer la mélodie</button>
       </section>
-    </div>
-
-    <div class="menu">
-      <button id="color" class="menu-btn"><svg><use xlink:href="#colorSvg"/></svg></button>
-      <button id="image" class="menu-btn"><svg><use xlink:href="#pictureSvg"/></svg></button>
-    </div>
-
   </main>
+
+
+
+  <div class="menu">
+    <button id="color" class="menu-btn"><svg><use xlink:href="#colorSvg"/></svg></button>
+    <button id="image" class="menu-btn"><svg><use xlink:href="#pictureSvg"/></svg></button>
+  </div>
 
   <div class="use-svg">
     <svg id="colorSvg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
