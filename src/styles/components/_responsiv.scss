@@ -1,0 +1,107 @@
+@media(min-width: 500px) {
+    .section-image .container-tolisten .color-list {
+        bottom: -3rem;
+        &-el {
+            margin: 0.5rem;
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+@media(min-width: 900px) {
+    .section {
+        height: 100%;
+        align-items: center;
+
+        &-intro-btn::before {
+            content: "Cliquez pour commencer";
+        }
+
+        &-title {
+            margin-top: -10rem;
+        }
+        
+        .container-tolisten {
+            width: 100%;
+            height: 50vh;
+        }
+    
+        .form {
+            margin-top: 3rem;
+            width: 500px;
+            padding-top: inherit;
+        }
+
+        &-color {
+            .container-tolisten {
+                &-frequency {
+                    font-size: 10vw;
+                    line-height: 28vw;
+                }
+            }
+        }
+
+        &-image {
+            .container-tolisten {
+                .color-list {
+                    bottom: -4rem;
+                    padding: 0.25rem;
+                    &-el {
+                        margin: 1rem;
+                        width: 5rem;
+                        height: 5rem;
+                    }
+                }
+
+                .background-container {
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    .container-img {            
+                        position: absolute;
+                        object-fit: cover;
+                        width: 100%;
+    
+                        filter: blur(50px);
+                        transform: scale(1.2) translateY(-10%);
+    
+                        background-size: cover;
+                        background-position: center;
+                    }
+                }
+    
+                .img {
+                    position: absolute;
+                    top: 3.5rem;
+                    width: 500px;
+                    height: 300px;
+                    border-radius: $rounded;
+    
+                    object-fit: cover;
+    
+                    z-index: 10;
+                }
+            }
+
+            .form {
+                margin-top: 6rem;
+            }
+        }
+    }
+
+
+    .menu {
+        margin-bottom: 1rem;
+        justify-content: center;
+        &-btn {
+            width: 5rem;
+            height: 5rem;
+            border-radius: $rounded;
+
+            margin: 1rem;
+        }
+    }
+}

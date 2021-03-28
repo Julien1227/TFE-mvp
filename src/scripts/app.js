@@ -30,8 +30,8 @@ const body = document.querySelector('body'),
 sliderBtn = document.querySelectorAll('.menu-btn');
 
 // écoute d'une couleur
-var colorInput = document.querySelectorAll('#colorInput'),
-    colorSpan = document.querySelectorAll('#colorSpan'),
+var colorInput = document.querySelectorAll('.colorInput'),
+    colorSpan = document.querySelectorAll('.colorSpan'),
     actualColor = document.getElementById('toListenColor'),
     actualNote = document.getElementById('playedColor'),
     input = document.querySelectorAll('.colorIpnut');
@@ -43,16 +43,7 @@ var colorInputs = [],
 
 
 
-
-
-
-
-
-
-
-
-
-//Démarre l'API - là interviendra l'animation d'introduction
+    //Démarre l'API - là interviendra l'animation d'introduction
 const sectionIntro = document.querySelector('.section-intro');
 
 sectionIntro.addEventListener('click', (e) => {
@@ -71,18 +62,6 @@ sectionIntro.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // SLIDER
 sliderBtn.forEach(element => {
     element.addEventListener('click', (e) => {
@@ -92,19 +71,6 @@ sliderBtn.forEach(element => {
         body.setAttribute('data-page', page);
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -162,30 +128,19 @@ for (let i = 0; i < colorInputs.length; i++) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // écoute d'une image
 var speed = 150;
 const playRate = document.getElementById('playRate'),
       playRateSpan = document.getElementById('playRateSpan');
 
 const playImageBtn = document.getElementById('getColors'),
-      imgToListen = document.getElementById('image'),
+      imgToListen = document.querySelector('.img'),
       btnUpload = document.getElementById('uploadBtn'),
       inputUpload = document.getElementById('uploadInput'),
       colorList = document.querySelector('.color-list'),
-      backgroundImg = document.querySelector('.container-tolisten-image');
+      backgroundImg = document.querySelector('.container-img');
 
-
+      
 
 
 
@@ -205,7 +160,7 @@ btnUpload.addEventListener('click', (e) => {
 //Actualise l'image uploadée
 inputUpload.addEventListener('change', (e) => {
     let imgLink = URL.createObjectURL(e.target.files[0]);
-    backgroundImg.setAttribute("style", "background:url('"+imgLink+"')");
+    backgroundImg.src = imgLink;
     imgToListen.src = imgLink;
 });
 
@@ -280,39 +235,6 @@ playImageBtn.addEventListener('click', (e) => {
         }, i*speed);
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

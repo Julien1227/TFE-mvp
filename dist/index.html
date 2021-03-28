@@ -12,10 +12,10 @@
   
   <link rel="stylesheet" href="styles/app.css">
 </head>
-<body data-page="image">
+<body data-page="color">
 
   <section class="section section-intro">
-    <button class="section-intro-btn">commencer</button>
+    <button class="section-intro-btn"></button>
   </section>
 
   <main class="main">
@@ -29,30 +29,34 @@
 
         <div class="form">
           <div class="form-el">
-            <label>Teinte: <span data-p="color" id="colorSpan">180</span>°</label>
-            <input id="colorInput" type="range" name="volume" min="0" max="359">
+            <label>Teinte: <span data-p="color" class="colorSpan">180</span>°</label>
+            <input class="colorInput" type="range" name="volume" min="0" max="359">
           </div>
       
           <div class="form-el">
-            <label>Saturation: <span data-p="sat" id="colorSpan">50</span>%</label>
-            <input id="colorInput" type="range" name="volume" min="0" max="100">
+            <label>Saturation: <span data-p="sat" class="colorSpan">50</span>%</label>
+            <input class="colorInput" type="range" name="volume" min="0" max="100">
           </div>
       
           <div class="form-el">
-            <label>Luminiosité: <span data-p="lum" id="colorSpan">50</span>%</label>
-            <input id="colorInput" type="range" name="volume" min="0" max="100">
+            <label>Luminiosité: <span data-p="lum" class="colorSpan">50</span>%</label>
+            <input class="colorInput" type="range" name="volume" min="0" max="100">
           </div>
+        </div>
       </section>
       
       
       
       <section class="section section-image">
 
-        <div style="background-image: url('assets/images/noPicture.jpg');" class="container-tolisten container-tolisten-image">
+        <div class="container-tolisten container-tolisten-image">
 
           <button id="uploadBtn" class="btn">Choisir une autre image</button>
 
-          <img id="image" class="img" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+          <img class="img" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+          <div class="background-container">
+            <img class="container-img" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+          </div>
 
           <input id="uploadInput" type="file" accept=".jpeg, .jpg, .png">
 

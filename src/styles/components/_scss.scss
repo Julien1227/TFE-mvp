@@ -54,6 +54,7 @@ body {
     
     &-intro {
         position: absolute;
+        height: 100%;
         top: 0;
         left: 0;
         z-index: 150;
@@ -67,7 +68,7 @@ body {
             font-weight: 700;
             color: $white;
             &::before {
-                content: "Appuyez pour ";
+                content: "Appuyez pour commencer";
             }
         }
 
@@ -79,24 +80,24 @@ body {
     
     
     .container-tolisten {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        align-items: flex-end;
-        
+                
         height: 600px;
     }
 
     .form {
-        box-sizing: content-box;
-
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+        box-sizing: content-box;
 
         height: 400px;
         padding: 2rem;
+        padding-top: 5rem;
 
         &-el {
             margin: 0.5rem 0;
@@ -111,7 +112,8 @@ body {
         }
 
         .btn {
-            margin-top: 1rem;
+            text-align: center;
+            margin: 1rem auto;
         }
     }
 
@@ -126,6 +128,7 @@ body {
                 font-weight: 800;
                 letter-spacing: -0.3rem;
                 color: $white;
+                pointer-events: none;
             }
 
             &-shadow {
@@ -142,22 +145,19 @@ body {
     &-image {
         .container-tolisten {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             flex-direction: column;
             align-items: center;
     
             box-sizing: border-box;
-            padding: 2rem;
-    
-            background-size: cover;
-            background-position: center;
             .color-list {
+                position: absolute;
+                z-index: 1000;
+                bottom: -10vw;
                 display: flex;
-                justify-self: flex-end;
     
                 padding: 0.5rem;
                 margin: 0;
-                margin-bottom: -5rem;
                 box-shadow: $shadow;
     
                 background-color: $white;
@@ -170,12 +170,23 @@ body {
                     border-radius: $round;
                 }
             }
-    
-            .img {
+            
+            .background-container {
                 display: none;
+            }
+
+            .img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+
+                z-index: 10;
             }
     
             .btn {
+                margin-top: 2rem;
                 z-index: 20;
             }
         }
@@ -264,3 +275,6 @@ input[type=range]{
         }
     }
 }
+
+
+

@@ -9199,8 +9199,8 @@ var body = document.querySelector('body'),
     // Slider
 sliderBtn = document.querySelectorAll('.menu-btn'); // écoute d'une couleur
 
-var colorInput = document.querySelectorAll('#colorInput'),
-    colorSpan = document.querySelectorAll('#colorSpan'),
+var colorInput = document.querySelectorAll('.colorInput'),
+    colorSpan = document.querySelectorAll('.colorSpan'),
     actualColor = document.getElementById('toListenColor'),
     actualNote = document.getElementById('playedColor'),
     input = document.querySelectorAll('.colorIpnut');
@@ -9276,11 +9276,11 @@ var speed = 150;
 var playRate = document.getElementById('playRate'),
     playRateSpan = document.getElementById('playRateSpan');
 var playImageBtn = document.getElementById('getColors'),
-    imgToListen = document.getElementById('image'),
+    imgToListen = document.querySelector('.img'),
     btnUpload = document.getElementById('uploadBtn'),
     inputUpload = document.getElementById('uploadInput'),
     colorList = document.querySelector('.color-list'),
-    backgroundImg = document.querySelector('.container-tolisten-image'); //ECOUTE D'UNE IMAGE
+    backgroundImg = document.querySelector('.container-img'); //ECOUTE D'UNE IMAGE
 // Réglage de la vitesse de lecture
 
 playRate.addEventListener('input', function (e) {
@@ -9294,7 +9294,7 @@ btnUpload.addEventListener('click', function (e) {
 
 inputUpload.addEventListener('change', function (e) {
   var imgLink = URL.createObjectURL(e.target.files[0]);
-  backgroundImg.setAttribute("style", "background:url('" + imgLink + "')");
+  backgroundImg.src = imgLink;
   imgToListen.src = imgLink;
 }); //Récupère les couleurs de l'image et les joue
 
