@@ -1,9 +1,24 @@
 $white: #fff;
-$black: #000;
+$black: #000000;
 
-$size-text: 16px;
-$line-height: 1.5;
+$light-grey: #eeeeee;
+$grey: #353535;
 
-$h3: $size-text * $line-height;
-$h2: $h3 * $line-height;
-$h1: $h2 * $line-height;
+$lightBtn: #ffffff88;
+$darkBtn: #0000002f;
+
+$t-slider: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+$t-slow: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+$t-fast: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+
+
+// INPUT RANGE
+$input-track: #ebebeb;
+$input-thumb-size: 1.3rem;
+$input-thumb-border: none;
+$input-thumb-color: #8b8b8b;
+$input-width: 102%;
+
+// border-radius
+$round: 1000px;
+$rounded: 15px;

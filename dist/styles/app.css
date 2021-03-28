@@ -1,121 +1,292 @@
-body {
-  font-family: sans-serif;
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);body {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
-  color: #000;
+  color: #000000;
 }
 
-.container {
+h1 {
+  font-size: 0;
+  font-weight: 900;
+}
+h1 span {
+  display: inline-block;
+  font-size: 54px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+.use-svg, #uploadInput {
+  display: none;
+}
+
+.btn {
+  background-color: #ffffff88;
+  padding: 1rem;
+  border-radius: 1000px;
+  backdrop-filter: blur(20px);
+  font-weight: 600;
+}
+.btn-dark {
+  background-color: #0000002f;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+.menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 1rem;
+  background-color: #fff;
+  color: #353535;
+}
+.menu-btn svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.slider {
+  display: flex;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 100%;
+  height: 100vh;
+}
+.section-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 150;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+}
+.section-intro-btn {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+}
+.section-intro-btn::before {
+  content: "Appuyez pour ";
+}
+.section-intro-title {
+  color: #fff;
+  position: absolute;
+}
+.section .container-tolisten {
+  height: 100%;
+}
+.section .container-tolisten-color {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.section .container-tolisten-color .frequency {
+  position: relative;
+  z-index: 100;
+  margin-bottom: -10.5vw;
+  font-size: 25vw;
+  font-weight: 800;
+  letter-spacing: -0.3rem;
+  color: #fff;
+}
+.section .container-tolisten-color-shadow {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top, #00000033, #00000000);
+}
+.section .container-tolisten-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+}
+.section .container-tolisten-image .image {
+  display: none;
+}
+.section .container-tolisten-image .color-list {
+  display: flex;
+  background-color: #fff;
+  border-radius: 1000px;
+}
+.section .container-tolisten-image .color-list-el {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 1000px;
+}
+.section .form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-self: flex-end;
+  margin-bottom: 4rem;
+  padding: 2rem;
+}
+.section .form-el {
+  margin: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.section .form-el label {
+  margin-bottom: 0.5rem;
+}
+.section .form .btn {
+  margin-top: 1rem;
 }
 
-.use-svg {
-  display: none;
-}
-
-input, .btn {
-  padding: 0.5rem;
-  border: 1px solid #000 !important;
-  border-radius: 5px;
-}
-
-.btn {
+/* Css 100% responsiv des input range */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 102%;
+  height: 1.3rem;
   cursor: pointer;
-  padding: 1rem;
-}
-.btn:active {
-  background-color: #000;
-  color: #fff;
-}
-
-.mask {
-  overflow: hidden;
-  width: 100%;
-  max-width: 500px;
-  height: 30vh;
-  border-radius: 10px;
-  margin: 2rem 0;
-}
-.mask .img {
-  object-fit: cover;
-  object-position: center;
-  height: 100%;
-  width: 100%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  max-width: 100%;
-}
-.form #imgInput {
-  font-size: 16px;
-  margin-top: 0.5rem;
-}
-.form-feild {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-.form-feild:last-child {
-  margin-bottom: inherit;
-}
-
-.color-list {
-  display: flex;
-  justify-self: center;
-  margin-top: 2rem;
-}
-.color-list .color {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+  background: #ebebeb;
   border-radius: 1000px;
-  margin-right: 1rem;
 }
-.color-list .color:last-child {
-  margin-right: inherit;
-}
-
-input[type=range] {
+input[type=range]::-webkit-slider-thumb {
+  border: none;
+  height: 1.3rem;
+  width: 1.3rem;
+  background: #8b8b8b;
+  cursor: pointer;
   -webkit-appearance: none;
-  /* Hides the slider so that custom slider can be made */
-  width: auto;
-  /* Specific width is required for Firefox. */
-  background: #fff;
-  /* Otherwise white in Chrome */
-  height: 1px;
+  margin-top: 0px;
+  border-radius: 1000px;
+}
+input[type=range]::-moz-range-track {
+  width: 102%;
+  height: 1.3rem;
+  cursor: pointer;
+  background: #ebebeb;
+  border-radius: 1000px;
+}
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 1.3rem;
+  width: 1.3rem;
+  background: #8b8b8b;
+  cursor: pointer;
+  border-radius: 1000px;
+  box-sizing: border-box;
+}
+input[type=range]::-ms-track {
+  width: 102%;
+  height: 1.3rem;
+  cursor: pointer;
+  background: #ebebeb;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 3px;
+  background: #8b8b8b;
+  cursor: pointer;
+  border-radius: 1000px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: transparent;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: transparent;
 }
 
-@media (min-width: 550px) {
-  .btn:hover {
-    background-color: #000;
-    color: #fff;
-  }
-
-  .color-list .color {
-    width: 80px;
-    height: 80px;
-  }
-
-  .form {
-    max-width: 500px;
-  }
+body {
+  margin: 0;
 }
+
+svg {
+  height: inherit;
+}
+
 button, input {
   background-color: transparent;
   font-size: inherit;
   color: inherit;
   font-weight: inherit;
-  border: inherit;
+  border: none;
 }
 
 ul {
   list-style: none;
   padding: 0;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 100%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+body[data-page=color] .slider {
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body[data-page=color] .menu-btn[id=image] {
+  background-color: #eeeeee;
+  transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  cursor: pointer;
+}
+body[data-page=image] .slider {
+  transform: translateX(-100vw);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body[data-page=image] .menu-btn[id=color] {
+  background-color: #eeeeee;
+  transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  cursor: pointer;
+}
+
+.menu-btn {
+  transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
 }
 /*# sourceMappingURL=app.css.map*/

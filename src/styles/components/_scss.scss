@@ -1,0 +1,240 @@
+.use-svg, #uploadInput {display: none;}
+
+.btn {
+    background-color: $lightBtn;
+    padding: 1rem;
+    border-radius: $round;
+    backdrop-filter: blur(20px);
+    font-weight: 600;
+    &-dark {
+        background-color: $darkBtn;
+    }
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    display: flex;
+    &-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 1rem;
+
+        background-color: $white;
+        color: #353535;
+        & svg {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
+
+.slider {
+    display: flex;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    min-width: 100%;
+    height: 100vh;
+    
+    &-intro {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 150;
+        background-color: $black;
+    
+        justify-content: center;
+        align-items: center;
+    
+        &-btn {
+            font-size: $h2;
+            font-weight: 700;
+            color: $white;
+            &::before {
+                content: "Appuyez pour ";
+            }
+        }
+
+        &-title {
+            color: $white;
+            position: absolute;
+        }
+    }
+
+    .container-tolisten {
+        height: 100%;
+        &-color {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+
+            .frequency {
+                position: relative;
+                z-index: 100;
+                margin-bottom: -10.5vw;
+                font-size: 25vw;
+                font-weight: 800;
+                letter-spacing: -0.3rem;
+                color: $white;
+                
+            }
+            &-shadow {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 20%;
+
+                background: linear-gradient(to top, #00000033, #00000000);
+            }
+        }
+
+        &-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+
+            background-size: cover;
+            background-position: center;
+            .image {
+                display: none;
+            }
+
+            .color-list {
+                display: flex;
+                background-color: $white;
+                border-radius: $round;
+                &-el {
+                    width: 20rem;
+                    height: 20rem;
+                    border-radius: $round;
+                }
+            }
+        }
+
+    }
+    .form {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-self: flex-end;
+        margin-bottom: 4rem;
+
+        padding: 2rem;
+        &-el {
+            margin: 0.5rem 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-bottom: 0.5rem;
+            }
+
+        }
+
+        .btn {
+            margin-top: 1rem;
+        }
+    }
+}
+
+
+
+
+
+
+
+// https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+/* Css 100% responsiv des input range */
+input[type=range]{
+    &::-webkit{
+        &-slider-runnable-track {
+            width: $input-width;
+            height: $input-thumb-size;
+            cursor: pointer;
+            background: $input-track;
+            border-radius: $round;
+        }
+
+        &-slider-thumb {
+            border: $input-thumb-border;
+            height: $input-thumb-size;
+            width: $input-thumb-size;
+            background: $input-thumb-color;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: 0px;
+            border-radius: $round;
+        }
+    }
+
+
+    &::-moz {
+        &-range-track {
+            width: $input-width;
+            height: $input-thumb-size;
+            cursor: pointer;
+            background: $input-track;
+            border-radius: $round;
+        }
+
+        &-range-thumb {
+            border: $input-thumb-border;
+            height: $input-thumb-size;
+            width: $input-thumb-size;
+            background: $input-thumb-color;
+            cursor: pointer;
+            border-radius: $round;
+            box-sizing: border-box;
+        }
+    }
+
+    &::-ms{
+        &-track {
+            width: $input-width;
+            height: $input-thumb-size;
+            cursor: pointer;
+            background: $input-track;
+            border-color: transparent;
+            border-width: 16px 0;
+            color: transparent;
+        }
+
+        &-thumb {
+            border: $input-thumb-border;
+            height: $input-thumb-size;
+            width: $input-thumb-size;
+            border-radius: 3px;
+            background: $input-thumb-color;
+            cursor: pointer;
+            border-radius: $round;
+        }
+    }
+
+    &:focus::-ms-fill{
+        &-lower {
+            background: transparent;
+        }
+        &-upper {
+            background: transparent;
+        }
+    }
+}

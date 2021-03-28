@@ -1,0 +1,31 @@
+body {
+    &[data-page="color"] {
+        .slider {
+            transform: translateX(0);
+            transition: $t-slider;
+        }
+
+        .menu-btn[id="image"] {
+            background-color: $light-grey;
+            transition: $t-slow;
+            cursor: pointer;
+        }
+    }
+    
+    &[data-page="image"] {
+        .slider {
+            transform: translateX(-100vw);
+            transition: $t-slider;
+        }
+
+        .menu-btn[id="color"] {
+            background-color: $light-grey;
+            transition: $t-slow;
+            cursor: pointer;
+        }
+    }
+}
+
+.menu-btn {
+    transition: $t-slow;
+}

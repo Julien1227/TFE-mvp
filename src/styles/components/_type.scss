@@ -1,7 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$size-text: 16px;
+$line-height: 1.5;
+
+$h3: $size-text * $line-height;
+$h2: $h3 * $line-height;
+$h1: $h2 * $line-height;
+
 body {
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: $size-text;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: $line-height;
   color: $black;
 }
 
+h1 {
+  font-size: 0;
+  font-weight: 900;
+  span {
+    display: inline-block;
+    font-size: $h1;
+  }
+}
+
+h2 {
+  font-size: $h2;
+}

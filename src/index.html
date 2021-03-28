@@ -12,10 +12,84 @@
   
   <link rel="stylesheet" href="styles/app.css">
 </head>
-<body>
-  
-  
+<body data-page="image">
 
+  <section class="section section-intro">
+    <button class="section-intro-btn">commencer</button>
+  </section>
+
+  <main class="main">
+    <div class="slider">
+
+      <section class="section">
+
+        <div style="background: linear-gradient(to top, #265973, #40bfbf);" class="container-tolisten container-tolisten-color">
+          <span class="frequency" id="playedColor">446 Hz</span>
+          <div class="container-tolisten-shadow"></div>
+        </div>
+
+        <div class="form">
+          <div class="form-el">
+            <label>Teinte: <span data-p="color" id="colorSpan">180</span>°</label>
+            <input id="colorInput" type="range" name="volume" min="0" max="359">
+          </div>
+      
+          <div class="form-el">
+            <label>Saturation: <span data-p="sat" id="colorSpan">50</span>%</label>
+            <input id="colorInput" type="range" name="volume" min="0" max="100">
+          </div>
+      
+          <div class="form-el">
+            <label>Luminiosité: <span data-p="lum" id="colorSpan">50</span>%</label>
+            <input id="colorInput" type="range" name="volume" min="0" max="100">
+          </div>
+      </section>
+      
+      
+      
+      <section class="section">
+
+        <div class="container-tolisten container-tolisten-image" style="background-image: url(/assets/images/img.jpg)">
+          <button id="uploadBtn" class="btn">Choisir une autre image</button>
+          <img id="image" src="assets/images/noPicture.jpg" alt="L'image n'a pas pu charger">
+          <input id="uploadInput" type="file" accept=".jpeg, .jpg, .png">
+          <div class="container-tolisten-shadow"></div>
+        </div>
+        <ul class="color-list"></ul>
+
+        <div class="form">
+          <div class="form-el">
+            <label>Vitesse de lecture: <span id="playRateSpan">150</span>ms</label>
+            <input id="playRate" type="range" min="-500" max="-50">
+          </div>
+
+          <button class="btn btn-dark">Jouer la mélodie</button>
+        </div>
+    
+        <button id="goBtn" class="btn">Générer la mélodie</button>
+      </section>
+    </div>
+
+    <div class="menu">
+      <button id="color" class="menu-btn"><svg><use xlink:href="#colorSvg"/></svg></button>
+      <button id="image" class="menu-btn"><svg><use xlink:href="#pictureSvg"/></svg></button>
+    </div>
+
+  </main>
+
+  <div class="use-svg">
+    <svg id="colorSvg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+      <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+    </svg>
+
+    <svg id="pictureSvg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+      <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+    </svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>
