@@ -9290,20 +9290,19 @@ playRate.addEventListener('input', function (e) {
 }); // Upload d'une image
 
 btnUpload.addEventListener('click', function (e) {
-  inputUpload.click();
-}); //Actualise l'image uploadée
+  inputUpload.click(); //Actualise l'image uploadée
 
-inputUpload.addEventListener('change', function (e) {
-  var imgLink = URL.createObjectURL(e.target.files[0]);
-  backgroundImg.src = imgLink;
-  imgToListen.src = imgLink;
+  inputUpload.addEventListener('change', function (e) {
+    var imgLink = URL.createObjectURL(e.target.files[0]);
+    backgroundImg.src = imgLink;
+    imgToListen.src = imgLink;
+  });
 }); //Récupère les couleurs de l'image et les joue
 
 playImageBtn.addEventListener('click', function (e) {
   colorList.innerHTML = "";
   var vibrant = new Vibrant(imgToListen);
   var colors = vibrant.swatches();
-  console.log(colors);
   var gains = [],
       frqs = [];
 
@@ -9321,8 +9320,7 @@ playImageBtn.addEventListener('click', function (e) {
 
       var _frq = setFrequency(hslColor[0], hslColor[1], hslColor[2]);
 
-      frqs.push(_frq);
-      console.log(hslColor[0]); //crée et récupère un gain
+      frqs.push(_frq); //crée et récupère un gain
 
       var gain = setGain(hslColor[1], hslColor[2]);
       gains.push(gain);
@@ -9351,8 +9349,8 @@ playImageBtn.addEventListener('click', function (e) {
 
   function play(i) {
     setTimeout(function () {
-      o.frequency.value = frqs[i];
-      g.gain.value = gains[i];
+      g.gain.setValueAtTime(gains[i], context.currentTime);
+      o.frequency.setValueAtTime(frqs[i], context.currentTime);
       g.gain.setTargetAtTime(0, context.currentTime, speed / 1550);
     }, i * speed);
   }

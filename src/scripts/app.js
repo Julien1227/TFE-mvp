@@ -156,14 +156,14 @@ playRate.addEventListener('input', (e) => {
 // Upload d'une image
 btnUpload.addEventListener('click', (e) => {
      inputUpload.click();
+     //Actualise l'image uploadée
+     inputUpload.addEventListener('change', (e) => {
+         let imgLink = URL.createObjectURL(e.target.files[0]);
+         backgroundImg.src = imgLink;
+         imgToListen.src = imgLink;
+     });
 });
 
-//Actualise l'image uploadée
-inputUpload.addEventListener('change', (e) => {
-    let imgLink = URL.createObjectURL(e.target.files[0]);
-    backgroundImg.src = imgLink;
-    imgToListen.src = imgLink;
-});
 
 
 //Récupère les couleurs de l'image et les joue
@@ -172,8 +172,6 @@ playImageBtn.addEventListener('click', (e) => {
 
     let vibrant = new Vibrant(imgToListen);
     let colors = vibrant.swatches();
-
-    console.log(colors);
 
     let gains = [],
         frqs = [];
@@ -196,8 +194,6 @@ playImageBtn.addEventListener('click', (e) => {
             //Récupère une fréquence pour chaque couleurs
             let frq = setFrequency(hslColor[0], hslColor[1], hslColor[2])
             frqs.push(frq);
-
-            console.log(hslColor[0]);
             
             //crée et récupère un gain
             let gain = setGain(hslColor[1], hslColor[2]);
@@ -230,8 +226,9 @@ playImageBtn.addEventListener('click', (e) => {
 
     function play(i) {
         setTimeout(function() {
-            o.frequency.value = frqs[i];
-            g.gain.value = gains[i];
+            g.gain.setValueAtTime(gains[i], context.currentTime);
+            o.frequency.setValueAtTime(frqs[i], context.currentTime);
+
             g.gain.setTargetAtTime(0, context.currentTime, speed/1550);
         }, i*speed);
     }
