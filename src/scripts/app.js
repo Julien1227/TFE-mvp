@@ -44,9 +44,10 @@ var colorInputs = [],
 
 
     //Démarre l'API - là interviendra l'animation d'introduction
-const sectionIntro = document.querySelector('.section-intro');
+const sectionIntro = document.querySelector('.section-intro'),
+      introBtn = document.querySelector('.section-intro-btn');
 
-sectionIntro.addEventListener('click', (e) => {
+introBtn.addEventListener('click', (e) => {
     o.start(0);
     // ANIMATION GSAP
     gsap.to(sectionIntro, {
@@ -284,6 +285,7 @@ function setColors(h, s, l) {
     );
 }
 
+// Calcule le gain
 function setGain(lum, sat) {
     //Si la couleur est lumineuse, alors le son s'estompe également
     if(lum >= 50) {
@@ -301,9 +303,10 @@ function setGain(lum, sat) {
     return gainValue;
 }
 
+// Calcule la fréquence
 function setFrequency(h, s, l) {
     let rgbColor = HSLtoRGB(h, s, l);
-    frq = Math.round((rgbColor[0]*1 + rgbColor[1]*1.6 + rgbColor[2]*0.4) * 1) / 1;
+    frq = Math.round((rgbColor[0]*0.9 + rgbColor[1]*1.7 + rgbColor[2]*0.4) * 1) / 1;
     return frq;
 }
 

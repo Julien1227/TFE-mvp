@@ -8,13 +8,20 @@ body {
 }
 
 .btn {
+    cursor: pointer;
     background-color: $lightBtn;
     padding: 1rem;
     border-radius: $round;
     backdrop-filter: blur(20px);
     font-weight: 600;
+
+    transition: $t-fast;
     &-dark {
         background-color: $darkBtn;
+    }
+    &:hover {
+        opacity: .6;
+        transition: $t-fast;
     }
 }
 
@@ -59,16 +66,37 @@ body {
         left: 0;
         z-index: 150;
         background-color: $black;
-    
+
+        overflow-y: scroll;
+        box-sizing: border-box;
+        padding-bottom: 5rem;
+        
+        color: $white;
         justify-content: center;
         align-items: center;
     
+        .text-block {
+            padding: 2rem;
+            max-width: 450px;
+            & h2 {
+                margin-top: -2rem;
+            }
+        }
+
         &-btn {
-            font-size: $h2;
+            cursor: pointer;
+
+            margin-top: 2rem;
+            font-size: $h3;
             font-weight: 700;
-            color: $white;
+
+            transition: $t-fast;
             &::before {
                 content: "Appuyez pour commencer";
+            }
+            &:hover {
+                opacity: .2;
+                transition: $t-fast;
             }
         }
 
@@ -76,6 +104,7 @@ body {
             color: $white;
             position: absolute;
         }
+
     }
     
     

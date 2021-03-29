@@ -7,16 +7,13 @@
 }
 
 h1 {
-  font-size: 0;
+  font-size: 36px;
   font-weight: 900;
-}
-h1 span {
-  display: inline-block;
-  font-size: 54px;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 24px;
+  opacity: 0.8;
 }
 
 .use-svg, #uploadInput {
@@ -31,14 +28,20 @@ body {
 }
 
 .btn {
+  cursor: pointer;
   background-color: #ffffff88;
   padding: 1rem;
   border-radius: 1000px;
   backdrop-filter: blur(20px);
   font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .btn-dark {
   background-color: #0000002f;
+}
+.btn:hover {
+  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .main {
@@ -79,16 +82,33 @@ body {
   left: 0;
   z-index: 150;
   background-color: #000000;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding-bottom: 5rem;
+  color: #fff;
   justify-content: center;
   align-items: center;
 }
+.section-intro .text-block {
+  padding: 2rem;
+  max-width: 450px;
+}
+.section-intro .text-block h2 {
+  margin-top: -2rem;
+}
 .section-intro-btn {
-  font-size: 36px;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-size: 24px;
   font-weight: 700;
-  color: #fff;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .section-intro-btn::before {
   content: "Appuyez pour commencer";
+}
+.section-intro-btn:hover {
+  opacity: 0.2;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .section-intro-title {
   color: #fff;
@@ -245,6 +265,10 @@ body {
 
 img {
   display: block;
+}
+
+a {
+  color: inherit;
 }
 
 svg {

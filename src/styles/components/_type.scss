@@ -16,14 +16,11 @@ body {
 }
 
 h1 {
-  font-size: 0;
+  font-size: $h2;
   font-weight: 900;
-  span {
-    display: inline-block;
-    font-size: $h1;
-  }
 }
 
 h2 {
-  font-size: $h2;
+  font-size: $h3;
+  opacity: .8;
 }
