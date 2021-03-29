@@ -1,3 +1,9 @@
+@media(max-width: 340px) {
+    .section-intro .text-block {
+        padding: inherit;
+    }
+}
+
 @media(min-width: 500px) {
     .section-image .container-tolisten .color-list {
         bottom: -3rem;
